@@ -1,0 +1,78 @@
+public enum LoanStatus {
+    ACTIVE, INACTIVE;
+    public static LoanStatus get(int index){
+        return LoanStatus.values()[index];
+    }
+}
+***********************************
+public enum Role implements GrantedAuthority {
+    ROLE_ADMIN,ROLE_CLIENT;
+    public String getAuthority(){
+        return name();
+    }
+}
+**********************************
+public enum LoanScoreResult {
+
+    NOT_RESULTED(0),
+    REJECTED(500),
+    APPROVED(1000);
+
+    private Integer loanScoreLimit;
+
+
+    LoanScoreResult(Integer loanScoreLimit) {
+        this.loanScoreLimit = loanScoreLimit;
+    }
+
+    public Integer getLoanScoreLimit() {
+        return loanScoreLimit;
+    }
+
+    public void setLoanScoreLimit(Integer loanScoreLimit) {
+        this.loanScoreLimit = loanScoreLimit;
+    }
+*******************************************************
+public enum LoanLimit {
+    LOWER(10000.00,5000.00),
+    HIGHER(20000.00,5000.00),
+    SPECIAL(0.00,0.00);
+
+    private Double loanLimitAmount;
+    private Double incomeLimit;
+
+    LoanLimit(Double loanLimitAmount, Double incomeLimit) {
+        this.loanLimitAmount = loanLimitAmount;
+        this.incomeLimit = incomeLimit;
+    }
+
+    public Double getLoanLimitAmount() {
+        return loanLimitAmount;
+    }
+
+    public void setLoanLimitAmount(Double loanLimitAmount) {
+        this.loanLimitAmount = loanLimitAmount;
+    }
+
+    public Double getIncomeLimit() {
+        return incomeLimit;
+    }
+
+    public void setIncomeLimit(Double incomeLimit) {
+        this.incomeLimit = incomeLimit;
+    }
+}
+********************************************************************************************
+ @Id
+    @Column(name = "national_identity_number",length = 11,updatable = false, nullable = false)
+    @NotBlank(message = "national identity number can not be blank")
+    @Pattern(regexp = "[1-9][0-9]{10}")
+//    @Column(name = "national_identity_number")
+    private String nationalIdentityNumber;
+
+@Email
+    private String email;
+
+@Min(18)
+    private  Integer age;
+
