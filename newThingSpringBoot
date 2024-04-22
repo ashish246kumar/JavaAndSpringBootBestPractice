@@ -109,5 +109,7 @@ public class CustomerLoanApplicationResponse {
  // Pause execution for 5 seconds
             TimeUnit.SECONDS.sleep(5);
 ***************************************************
-
+@Async use---->
+https://github.com/github4codedebugger/async-springboot/blob/master/src/main/java/com/async/config/AsyncConfig.java
+************************************************************************************************************
 
