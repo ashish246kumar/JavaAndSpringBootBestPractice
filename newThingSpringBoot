@@ -76,3 +76,18 @@ public enum LoanLimit {
 @Min(18)
     private  Integer age;
 
+
+    @Enumerated(EnumType.STRING)
+    private LoanScoreResult loanScoreResult;
+
+  @CreationTimestamp
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private Date loanDate;
+******************************************************************************************************
+@Temporal(TemporalType.DATE)
+private Date createdDate= new Date(System.currentTimeMillis())
+it will automatically create a date and save in the database
+we have .TIME also
+**************************************************************************
+
+
