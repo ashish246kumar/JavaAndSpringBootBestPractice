@@ -70,6 +70,10 @@ public enum LoanLimit {
 //    @Column(name = "national_identity_number")
     private String nationalIdentityNumber;
 
+ @NotNull(message = "monthly income can not be null")
+    @Min(1)
+    private Double monthlyIncome;
+
 @Email
     private String email;
 
@@ -89,5 +93,21 @@ private Date createdDate= new Date(System.currentTimeMillis())
 it will automatically create a date and save in the database
 we have .TIME also
 **************************************************************************
+@Size(min = 5, max = 15)
+    private String username;
+
+    @NotBlank
+    @Email(message = "Email not valid")
+    private String email;
+
+    @Size(min = 5, max = 20)
+    private String password;
+**************************************************************************************************
+@ToString
+public class CustomerLoanApplicationResponse {
+********************************************************************************************
+ // Pause execution for 5 seconds
+            TimeUnit.SECONDS.sleep(5);
+***************************************************
 
 
