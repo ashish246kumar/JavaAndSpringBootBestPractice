@@ -1,0 +1,43 @@
+Q)suppose i have made some changes on the feature branch and push that changes to remote on feature branch. Suppose some other person will pull those changes fro m feature branch and do some modification on the code and push to remote feature branch. 
+what will happen if person1 whoe push the changes to feature branch at first time now again do some changes on the local feature brach and now trying to push to feature branch on remote.
+
+**************
+Ans---
+In the scenario you've described, there are two people working on the same feature branch and making changes to it at different times. Here's what happens step-by-step:
+
+### Initial Setup
+
+1. **Person 1** makes some changes on their local `feature` branch and pushes those changes to the remote `feature` branch on a repository (e.g., on GitHub).
+
+### Second Set of Changes
+
+2. **Person 2** then pulls the `feature` branch from the remote repository onto their local machine. This means they now have the latest changes that Person 1 made.
+3. **Person 2** makes some modifications to the code in their local `feature` branch.
+4. **Person 2** then pushes their changes back to the remote `feature` branch. The remote `feature` branch now contains changes from both Person 1 and Person 2.
+
+### Subsequent Changes by Person 1
+
+5. **Person 1** wants to make more changes to the `feature` branch. Before they start making changes:
+   - It is crucial for Person 1 to first pull the latest changes from the remote `feature` branch to their local `feature` branch. This is because the remote branch now contains additional changes made by Person 2 that Person 1 does not yet have on their local branch.
+
+### If Person 1 Does Not Pull Latest Changes First
+
+- If **Person 1** does not pull the latest changes from the remote `feature` branch before making further changes:
+  - When Person 1 tries to push their new changes to the remote, they will encounter a **push rejected** error. This happens because their local branch history diverges from the remote branch history. The remote branch contains commits that are not present on Person 1's local branch.
+
+### Correct Process for Person 1
+
+6. **Pull Before You Push**: Person 1 should execute a `git pull` command to fetch and merge changes from the remote `feature` branch into their local branch. This step is critical to avoid conflicts and ensure that the branch histories do not diverge.
+   - If there are any conflicts (changes made by both Person 1 and Person 2 to the same lines of code), Git will prompt Person 1 to resolve these conflicts manually before completing the pull.
+
+### Making and Pushing Changes
+
+7. After pulling the latest changes and resolving any potential conflicts, Person 1 can proceed to make their changes, commit them, and push these changes back to the remote `feature` branch.
+
+### Summary and Best Practices
+
+- **Always Pull Before You Push**: This is especially important in a collaborative environment to ensure you are working with the most recent version of the branch.
+- **Resolve Conflicts Locally**: If there are conflicts during the pull, they must be resolved locally by the person pulling the changes. Only after resolving conflicts should the new changes be committed and pushed back to the remote repository.
+- **Communicate with Your Team**: Effective communication can help manage overlapping work and prevent conflicts. For instance, team members should inform others when they push significant changes to a shared branch.
+
+This workflow ensures that all contributors are always working with the latest code and that changes integrate smoothly, minimizing the risk of major conflicts or code integration issues.
