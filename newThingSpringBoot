@@ -112,4 +112,38 @@ public class CustomerLoanApplicationResponse {
 @Async use---->
 https://github.com/github4codedebugger/async-springboot/blob/master/src/main/java/com/async/config/AsyncConfig.java
 ************************************************************************************************************
+@EnableTransactionalManagement on the main class in spring boot-this application class-
+@Transaction on the function
+
+
+@Transactional
+    public Book addBook(Book book) {
+        // Save the new book in the database
+        book = bookRepository.save(book);
+        // Simulating an exception that occurs after saving
+        if (book.getPrice() > 100) {
+            throw new RuntimeException("Price too high");
+        }
+        return book;
+    }
+
+    // Method to update book details
+    @Transactional
+    public Book updateBook(Long id, String newTitle) {
+        Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+        book.setTitle(newTitle);
+        return bookRepository.save(book);
+    }
+@Configuration
+public class TransactionalConfig{
+ 
+@Bean
+public PlateFormTransactionManager instance(MongoDatabaseFactory dbFacory){
+     return new MongoTransactionManager(dbFactory);
+
+}
+
+}
+and in the main class apply--->@EnableTransactionalManagement
+***************************************************************************************************************************************************************
 
